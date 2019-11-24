@@ -1,1 +1,4 @@
-<p>administrar-reserva works!</p>
+<!-- <p>administrar-reserva works!</p> -->
+<section *ngFor="let r of reservas">
+    <p>{{r.inicio}}:{{r.final}}:{{r.usuario}}:{{r.ambiente}}</p>
+</section>

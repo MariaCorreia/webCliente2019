@@ -2,14 +2,30 @@
     <section class="card-body">
         <form (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <select>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+                <label for="usuario">Usuario:</label>
+                <select name="usuario" id="usuario" class="form-control" [(ngModel)]="form.usuario">
+                    <option *ngFor="let u of usuarios" value={{u.id}}>
+                        {{u.codigo}} - {{u.nome}}
+                    </option>
                 </select>
             </div>
-            <button type="submit">Cadastrar</button>
+            <div class="form-group">
+                <label for="ambiente">Ambiente:</label>
+                <select name="ambiente" id="ambiente" class="form-control" [(ngModel)]="form.ambiente">
+                    <option *ngFor="let u of ambientes" value={{u.id}}>
+                        {{u.codigo}} - {{u.nome}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inicio">Data e hora de inicio:</label>
+                <input type="datetime-local" name="inicio" id="inicio" [(ngModel)]="form.inicio" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="final">Data e hora final:</label>
+                <input type="datetime-local" name="final" id="final" [(ngModel)]="form.final" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
     </section>
 </div>

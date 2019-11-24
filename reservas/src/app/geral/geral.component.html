@@ -2,3 +2,11 @@
 <div *ngFor="let u of usuarios">
     <p>{{u.nome}}</p>
 </div>
+<h5>Ambientes:</h5>
+<div *ngFor="let a of ambientes">
+    {{a.nome}}
+</div>
+<h5>Reservas:</h5>
+<section *ngFor="let r of reservas">
+    <p>{{r.inicio}}:{{r.final}}:{{r.usuario}}:{{r.ambiente}}</p>
+</section>

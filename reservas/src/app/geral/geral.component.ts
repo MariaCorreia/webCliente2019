@@ -10,13 +10,24 @@ import { Config } from '../config';
 export class GeralComponent implements OnInit {
   cfg = new Config();
   usuarios:any;
-
+  ambientes:any;
+  reservas:any;
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
-    this.http.get(this.cfg.api+"/usuarios").toPromise().then(r =>{
-      // console.log(r);
+    let pms = [];
+    pms.push(this.http.get(this.cfg.api+"/usuarios").toPromise().then(r =>{
       this.usuarios = r;
+    }));
+    pms.push(this.http.get(this.cfg.api+"/ambientes").toPromise().then(r => {
+      this.ambientes = r;
+    }));
+    Promise.all(pms).then(r => {
+      this.http.get(this.cfg.api+"/reservas").toPromise().then(r => {
+        console.table(r);
+        r
+        this.reservas = r;
+      });
     });
   }
 
