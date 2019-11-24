@@ -12,13 +12,13 @@ import { AdministracaoComponent } from './administracao/administracao.component'
 
 const routes: Routes = [
   { path: '', component: GeralComponent },
-  { path: 'admin', component: AdministracaoComponent},
   { path: 'cadastro_ambiente', component: CadastroAmbienteComponent },
   { path: 'cadastro_reserva', component: CadastroReservaComponent},
   { path: 'cadastro_usuario', component: CadastroUsuarioComponent},
-  { path: 'editar_ambiente', component: EditarAmbienteComponent},
-  { path: 'editar_reserva', component: EditarReservaComponent},
-  { path: 'editar_usuario', component: EditarUsuarioComponent},
+  { path: 'editar_ambiente/:id', component: EditarAmbienteComponent},
+  { path: 'editar_reserva/:id', component: EditarReservaComponent},
+  { path: 'editar_usuario/:id', component: EditarUsuarioComponent},
+  { path: 'admin', component: AdministracaoComponent},
 ];
 
 @NgModule({

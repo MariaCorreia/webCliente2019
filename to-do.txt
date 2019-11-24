@@ -7,10 +7,10 @@ CRUD:
     [x] usuarios
     [x] ambientes
     [x] reservas
-[ ] Update
-    [ ] usuarios
-    [ ] ambientes
-    [ ] reservas
+[X] Update
+    [X] usuarios
+    [X] ambientes
+    [X] reservas
 [ ] Delete
     [ ] usuarios
     [ ] ambientes

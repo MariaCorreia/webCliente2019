@@ -1,1 +1,23 @@
-<p>editar-ambiente works!</p>
+<div *ngIf="form">
+    <div class="card">
+        <h2>Atualizando reserva</h2>
+        <section class="card-body">
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input required name="nome" id="nome" [(ngModel)]="form.nome" [ngModelOptions]="{standalone: true}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição:</label>
+                    <input name="descricao" id="descricao" [(ngModel)]="form.descricao" [ngModelOptions]="{standalone: true}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="lotacao">Lotação:</label>
+                    <input type="number" min="1" max="9999" name="lotacao" id="lotacao" [(ngModel)]="form.lotacao" [ngModelOptions]="{standalone: true}" class="form-control">
+                </div>
+                <button class = "btn btn-primary" type="submit">Atualizar</button>
+                <button class = "btn btn-primary" (click)="goBack()">Retornar</button>
+            </form>
+        </section>
+    </div>
+</div>

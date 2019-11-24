@@ -1,1 +1,19 @@
-<p>editar-usuario works!</p>
+<div *ngIf="form">
+    <div class="card">
+        <h2>Atualizando usuário</h2>
+        <section class="card-body">
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="codigo">Código:</label>
+                    <input required name="codigo" id="codigo" [(ngModel)]="form.codigo" [ngModelOptions]="{standalone: true}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input required name="nome" id="nome" [(ngModel)]="form.nome" [ngModelOptions]="{standalone: true}" class="form-control">
+                </div>
+                <button class = "btn btn-primary" type="submit">Atualizar</button>
+                <button class = "btn btn-primary" (click)="goBack()">Retornar</button>
+            </form>
+        </section>
+    </div>
+</div>

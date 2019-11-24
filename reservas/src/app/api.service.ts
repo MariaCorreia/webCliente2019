@@ -7,9 +7,9 @@ import { Config } from './config';
 })
 export class ApiService {
   cfg = new Config();
-  usuarios: any;
-  ambientes: any;
-  reservas: any;
+  usuarios: any = [];
+  ambientes: any = [];
+  reservas: any = [];
   invalido = true;
   constructor(private http: HttpClient) { }
 
@@ -57,7 +57,7 @@ export class ApiService {
   }
   getAmbiente(id) {
     if (this.invalido) {
-      return this.http.get(this.cfg.api + "/usuarios/" + id).toPromise();
+      return this.http.get(this.cfg.api + "/ambientes/" + id).toPromise();
     } else {
       return new Promise((resolve, reject) => {
         this.ambientes.forEach(v => {
@@ -72,7 +72,9 @@ export class ApiService {
   getReservas() {
     if (this.invalido) {
       return new Promise((resolve, reject) => {
-        let pms = [this.getUsuarios().then(r => { }), this.getAmbientes().then(r => { }), this.http.get(this.cfg.api + "/reservas").toPromise().then(r => {
+        let pms = [this.getUsuarios().then(r => { }), 
+          this.getAmbientes().then(r => { }), 
+          this.http.get(this.cfg.api + "/reservas").toPromise().then(r => {
           this.reservas = r;
           console.log(r);
         })];
@@ -82,11 +84,9 @@ export class ApiService {
           pms = [];
           for (let i = 0; i < this.reservas.length; i++) {
             pms.push(this.getUsuario(this.reservas[i].usuario).then(u => {
-              console.log(u);
               this.reservas[i].usuario = u;
             }));
             pms.push(this.getAmbiente(this.reservas[i].ambiente).then(a => {
-              console.log(a);
               this.reservas[i].ambiente = a;
             }));
           }
@@ -112,5 +112,81 @@ export class ApiService {
         reject({});
       });
     });
+  }
+
+  saveUsuario(usuario){
+    return new Promise ((resolve,reject)=> {
+
+      this.http.post(this.cfg.api+"/usuarios",usuario).toPromise().then(r => {
+        this.invalido = true;
+        this.usuarios.push(usuario);
+        resolve(usuario)
+      }).catch(e=>reject(e));
+    });
+  }      
+
+  saveAmbiente(ambiente){
+    return new Promise ((resolve,reject)=> {
+
+      this.http.post(this.cfg.api+"/ambientes",ambiente).toPromise().then(r => {
+        this.invalido = true;
+        this.ambientes.push(ambiente);
+        resolve(ambiente)
+      }).catch(e=>reject(e));
+    });
+  }
+
+  saveReserva(reserva){
+    return new Promise ((resolve,reject)=> {
+      this.http.post(this.cfg.api+"/reservas",reserva).toPromise().then(r => {
+        this.invalido = true;
+        this.reservas.push(reserva);
+        resolve(reserva)
+      }).catch(e=>reject(e));
+    });
+  }
+  
+  updateUsuario(usuario){
+    return new Promise ((resolve,reject)=> {
+      this.http.put(this.cfg.api + "/usuarios/" + usuario.id, usuario).toPromise().then((r:any)=>{
+        this.invalido = true;
+        // for (let i = 0; i < this.usuarios.length; i++) {
+        //   if (this.usuarios[i].id == r.id) {
+        //     this.usuarios[i] = r;
+        //   } 
+        // }
+        resolve(r);
+      }).catch(e=> reject(e));
+    });  
+  }
+
+  updateAmbiente(ambiente){
+    return new Promise ((resolve,reject)=> {
+      this.http.put(this.cfg.api + "/ambientes/" + ambiente.id, ambiente).toPromise().then((r:any)=>{
+        this.invalido = true;
+        // for (let i = 0; i < this.ambientes.length; i++) {
+          // if (this.ambientes[i].id == r.id) {
+            // this.ambientes[i] = r;
+          // } 
+        // }
+        resolve(r);
+      }).catch(e=> reject(e));
+    });  
+  }
+
+  updateReserva(reserva){
+    console.log(reserva);
+    
+    return new Promise ((resolve,reject)=> {
+      this.http.put(this.cfg.api + "/reservas/" + reserva.id, reserva).toPromise().then((r:any)=>{
+        this.invalido = true;
+        // for (let i = 0; i < this.reservas.length; i++) {
+        //   if (this.reservas[i].id == r.id) {
+        //     this.reservas[i] = r;
+        //   } 
+        // }
+        resolve(r);
+      }).catch(e=> reject(e));
+    });  
   }
 }
