@@ -8,5 +8,5 @@
 </div>
 <h5>Reservas:</h5>
 <section *ngFor="let r of reservas">
-    <p>{{r.inicio}}:{{r.final}}:{{r.usuario}}:{{r.ambiente}}</p>
+    <p>{{r.inicio}}:{{r.final}}:{{r.usuario.nome}}:{{r.ambiente.nome}}</p>
 </section>
