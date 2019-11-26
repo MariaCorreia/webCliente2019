@@ -1,5 +1,6 @@
-<div *ngIf="form">    
+<div *ngIf="form">
     <div class="card">
+        <h2>Atualizando reserva</h2>
         <section class="card-body">
             <form (ngSubmit)="onSubmit()">
                 <div class="form-group">
@@ -31,4 +32,21 @@
             </form>
         </section>
     </div>
+
+    <div *ngIf="erro" class="alert alert-danger">
+        <div class = "card">
+            <div class = "card-body">
+                <div *ngIf="erroAmbiente">
+                    <h3>Erro. Horarios conflitantes para o ambiente selecionado</h3>
+                </div>
+                <div *ngIf="erroUsuario">
+                    <h3>Erro. Horarios conflitantes para o usuário selecionado</h3>
+                </div>
+                <h4>Em conflito com: <br> Usuario: {{erroSource.usuario.nome}} | Ambiente: {{erroSource.ambiente.nome}} | Horario de inicio: {{erroSource.inicio}} | Horario de termino: {{erroSource.final}}</h4> 
+                <button class = "btn btn-primary" (click)="hideError()">Esconder</button>
+            </div>
+        </div>
+    </div>
+
 </div>
+

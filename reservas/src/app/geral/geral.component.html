@@ -1,12 +1,31 @@
 <h5>Usuarios:</h5>
-<div *ngFor="let u of usuarios">
+<section *ngFor="let u of usuarios"
+routerLink="/editar_usuario/{{u.id}}">
     <p>{{u.nome}}</p>
-</div>
-<h5>Ambientes:</h5>
-<div *ngFor="let a of ambientes">
-    {{a.nome}}
-</div>
-<h5>Reservas:</h5>
-<section *ngFor="let r of reservas">
-    <p>{{r.inicio}}:{{r.final}}:{{r.usuario.nome}}:{{r.ambiente.nome}}</p>
 </section>
+<button class = "btn btn-primary" routerLink="/cadastro_usuario/">Novo usuário</button>
+
+<h5>Ambientes:</h5>
+<section *ngFor="let a of ambientes"
+routerLink="/editar_ambiente/{{a.id}}">
+    {{a.nome}}
+</section>
+<button class = "btn btn-primary" routerLink="/cadastro_ambiente/">Novo ambiente</button>
+
+<h5>Reservas:</h5>
+<section *ngFor="let r of reservas"
+routerLink="/editar_reserva/{{r.id}}">
+    <p>{{r.inicio}} | {{r.final}} | {{r.usuario.nome}} | {{r.ambiente.nome}}</p>
+</section>
+<button class = "btn btn-primary" routerLink="/cadastro_reserva/">Nova reserva</button>
+
+
+<!-- Aviso: Retornar de páginas durante cadastro ou atualizações por meio da função location.back()
+ou clicar na seta do navegador resulta no apêndice de um objeto INCOMPLETO no arquivo json
+Verificar por quê. 
+Como realizar:
+1) Entre em cadastro_x ou atualizar_x
+2) clique no botão para retornar a página anterior OU clique no botão Retornar nas páginas editar_x
+3) Verifique json para confirmar que pelo menos UM dos campos se encontra nulo ou vazio
+4) Resulta em erro de PROMISE não identificado atualmente.
+-->
