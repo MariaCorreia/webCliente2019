@@ -1,4 +1,4 @@
 <h5>Ambientes:</h5>
-<div *ngFor="let a of ambientes">
-    {{a.nome}}
+<div *ngFor="let a of api.ambientes">
+    <p>{{a.nome}} <button class="btn btn-danger" (click)="deletar(a)">Deletar</button></p>
 </div>

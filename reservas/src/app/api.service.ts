@@ -72,9 +72,9 @@ export class ApiService {
   getReservas() {
     if (this.invalido) {
       return new Promise((resolve, reject) => {
-        let pms = [this.getUsuarios().then(r => { }), 
-          this.getAmbientes().then(r => { }), 
-          this.http.get(this.cfg.api + "/reservas").toPromise().then(r => {
+        let pms = [this.getUsuarios().then(r => { }),
+        this.getAmbientes().then(r => { }),
+        this.http.get(this.cfg.api + "/reservas").toPromise().then(r => {
           this.reservas = r;
           console.log(r);
         })];
@@ -114,41 +114,41 @@ export class ApiService {
     });
   }
 
-  saveUsuario(usuario){
-    return new Promise ((resolve,reject)=> {
+  saveUsuario(usuario) {
+    return new Promise((resolve, reject) => {
 
-      this.http.post(this.cfg.api+"/usuarios",usuario).toPromise().then(r => {
+      this.http.post(this.cfg.api + "/usuarios", usuario).toPromise().then(r => {
         this.invalido = true;
         this.usuarios.push(usuario);
         resolve(usuario)
-      }).catch(e=>reject(e));
+      }).catch(e => reject(e));
     });
-  }      
+  }
 
-  saveAmbiente(ambiente){
-    return new Promise ((resolve,reject)=> {
+  saveAmbiente(ambiente) {
+    return new Promise((resolve, reject) => {
 
-      this.http.post(this.cfg.api+"/ambientes",ambiente).toPromise().then(r => {
+      this.http.post(this.cfg.api + "/ambientes", ambiente).toPromise().then(r => {
         this.invalido = true;
         this.ambientes.push(ambiente);
         resolve(ambiente)
-      }).catch(e=>reject(e));
+      }).catch(e => reject(e));
     });
   }
 
-  saveReserva(reserva){
-    return new Promise ((resolve,reject)=> {
-      this.http.post(this.cfg.api+"/reservas",reserva).toPromise().then(r => {
+  saveReserva(reserva) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.cfg.api + "/reservas", reserva).toPromise().then(r => {
         this.invalido = true;
         this.reservas.push(reserva);
         resolve(reserva)
-      }).catch(e=>reject(e));
+      }).catch(e => reject(e));
     });
   }
-  
-  updateUsuario(usuario){
-    return new Promise ((resolve,reject)=> {
-      this.http.put(this.cfg.api + "/usuarios/" + usuario.id, usuario).toPromise().then((r:any)=>{
+
+  updateUsuario(usuario) {
+    return new Promise((resolve, reject) => {
+      this.http.put(this.cfg.api + "/usuarios/" + usuario.id, usuario).toPromise().then((r: any) => {
         this.invalido = true;
         // for (let i = 0; i < this.usuarios.length; i++) {
         //   if (this.usuarios[i].id == r.id) {
@@ -156,29 +156,29 @@ export class ApiService {
         //   } 
         // }
         resolve(r);
-      }).catch(e=> reject(e));
-    });  
+      }).catch(e => reject(e));
+    });
   }
 
-  updateAmbiente(ambiente){
-    return new Promise ((resolve,reject)=> {
-      this.http.put(this.cfg.api + "/ambientes/" + ambiente.id, ambiente).toPromise().then((r:any)=>{
+  updateAmbiente(ambiente) {
+    return new Promise((resolve, reject) => {
+      this.http.put(this.cfg.api + "/ambientes/" + ambiente.id, ambiente).toPromise().then((r: any) => {
         this.invalido = true;
         // for (let i = 0; i < this.ambientes.length; i++) {
-          // if (this.ambientes[i].id == r.id) {
-            // this.ambientes[i] = r;
-          // } 
+        // if (this.ambientes[i].id == r.id) {
+        // this.ambientes[i] = r;
+        // } 
         // }
         resolve(r);
-      }).catch(e=> reject(e));
-    });  
+      }).catch(e => reject(e));
+    });
   }
 
-  updateReserva(reserva){
+  updateReserva(reserva) {
     console.log(reserva);
-    
-    return new Promise ((resolve,reject)=> {
-      this.http.put(this.cfg.api + "/reservas/" + reserva.id, reserva).toPromise().then((r:any)=>{
+
+    return new Promise((resolve, reject) => {
+      this.http.put(this.cfg.api + "/reservas/" + reserva.id, reserva).toPromise().then((r: any) => {
         this.invalido = true;
         // for (let i = 0; i < this.reservas.length; i++) {
         //   if (this.reservas[i].id == r.id) {
@@ -186,7 +186,41 @@ export class ApiService {
         //   } 
         // }
         resolve(r);
-      }).catch(e=> reject(e));
-    });  
+      }).catch(e => reject(e));
+    });
+  }
+  deletarReserva(reserva) {
+    this.invalido = true;
+    return Promise.all([this.http.delete(this.cfg.api + "/reservas/" + reserva.id).toPromise()]);
+  }
+  deletaAmbiente(ambiente) {
+    // return new Promise(resolve => {
+    //   this.getReservas().then(r => {
+    let pms = [];
+    for (let i = 0; i < this.reservas.length; i++) {
+      if (this.reservas[i].ambiente.id == ambiente.id) {
+        pms.push(this.deletarReserva(this.reservas[i]));
+      }
+    }
+    pms.push(this.http.delete(this.cfg.api + "/ambientes/" + ambiente.id).toPromise());
+    this.invalido = true;
+    return Promise.all(pms);
+    //   });
+    // });
+  }
+  deletaUsuario(usuario) {
+    // return new Promise(resolve => {
+    // this.getReservas().then(r => {
+    let pms = [];
+    for (let i = 0; i < this.reservas.length; i++) {
+      if (this.reservas[i].usuario.id == usuario.id) {
+        pms.push(this.deletarReserva(this.reservas[i]));
+      }
+    }
+    pms.push(this.http.delete(this.cfg.api + "/usuarios/" + usuario.id).toPromise());
+    this.invalido = true;
+    return Promise.all(pms);
+    // });
+    // });
   }
 }

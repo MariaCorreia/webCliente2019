@@ -1,4 +1,4 @@
 <!-- <p>administrar-reserva works!</p> -->
-<section *ngFor="let r of reservas">
-    <p>{{r.inicio}}:{{r.final}}:{{r.usuario}}:{{r.ambiente}}</p>
+<section *ngFor="let r of api.reservas">
+    <p>{{r.inicio}}:{{r.final}}:{{r.usuario}}:{{r.ambiente}} <button class="btn btn-danger" (click)="deletar(r)">Deletar</button></p>
 </section>

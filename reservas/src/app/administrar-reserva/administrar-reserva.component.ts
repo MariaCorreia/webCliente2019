@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Config } from '../config';
+import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-administrar-reserva',
@@ -9,14 +11,14 @@ import { Config } from '../config';
 })
 export class AdministrarReservaComponent implements OnInit {
   cfg = new Config();
-  reservas:any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,public api: ApiService, public router: Router) { }
 
   ngOnInit() {
-    this.http.get(this.cfg.api+"/reservas").toPromise().then(r => {
-      console.table(r);
-      this.reservas = r;
+  }
+  deletar(reserva){
+    this.api.deletarReserva(reserva).then(r => {
+      this.router.navigate(["/admin"]);
     });
   }
 

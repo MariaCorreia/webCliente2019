@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Config } from '../config';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-administrar-ambiente',
@@ -9,15 +11,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdministrarAmbienteComponent implements OnInit {
   cfg = new Config();
-  ambientes:any;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,public api:ApiService,private router: Router) { }
 
   ngOnInit() {
-    this.http.get(this.cfg.api+"/ambientes").toPromise().then(r =>{
-      // console.log(r);
-      this.ambientes = r;
-    });
   }
 
+  deletar(ambiente){
+    this.api.deletaAmbiente(ambiente).then(r => {
+      this.router.navigate(["/admin"]);
+    });
+  }
 }

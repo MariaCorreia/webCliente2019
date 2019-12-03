@@ -1,4 +1,4 @@
 <h5>Usuarios:</h5>
-<div *ngFor="let u of usuarios">
-    <p>{{u.nome}}</p>
+<div *ngFor="let u of api.usuarios">
+    <p>{{u.nome}} <button class="btn btn-danger" (click)="deletar(u)">Deletar</button></p>
 </div>
