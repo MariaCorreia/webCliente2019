@@ -16,6 +16,7 @@ export class AdministrarUsuarioComponent implements OnInit {
   constructor(private http:HttpClient,public api:ApiService,private router: Router) { }
 
   ngOnInit() {
+    this.api.getUsuarios();
   }
   deletar(usuario){
     this.api.deletaUsuario(usuario).then(r => {

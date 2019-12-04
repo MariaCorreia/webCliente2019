@@ -11,10 +11,11 @@ import { Router } from '@angular/router';
 })
 export class AdministrarAmbienteComponent implements OnInit {
   cfg = new Config();
-
+  ambientes:any;
   constructor(private http:HttpClient,public api:ApiService,private router: Router) { }
 
   ngOnInit() {
+    this.api.getAmbientes();
   }
 
   deletar(ambiente){

@@ -15,6 +15,7 @@ export class AdministrarReservaComponent implements OnInit {
   constructor(private http: HttpClient,public api: ApiService, public router: Router) { }
 
   ngOnInit() {
+    this.api.getReservas();
   }
   deletar(reserva){
     this.api.deletarReserva(reserva).then(r => {
