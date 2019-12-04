@@ -37,7 +37,7 @@ export class EditarAmbienteComponent implements OnInit {
 
   onSubmit(){
     this.api.updateAmbiente(this.form).then(r=>{
-      this.route.navigate(["/"]);
+      this.route.navigate(["/admin"]);
     });
   }
 

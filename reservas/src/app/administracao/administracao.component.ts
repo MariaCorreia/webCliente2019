@@ -10,6 +10,8 @@ export class AdministracaoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    document.getElementById("navAdmin").classList.add("active");
+    document.getElementById("navPrincipal").classList.remove("active");
   }
 
 }

@@ -21,5 +21,8 @@ export class GeralComponent implements OnInit {
       this.ambientes = this.api.ambientes;
       this.reservas = this.api.reservas;
     });
+
+    document.getElementById("navPrincipal").classList.add("active");
+    document.getElementById("navAdmin").classList.remove("active");
   }
 }

@@ -18,9 +18,12 @@ export class AdministrarReservaComponent implements OnInit {
     this.api.getReservas();
   }
   deletar(reserva){
-    this.api.deletarReserva(reserva).then(r => {
-      this.router.navigate(["/admin"]);
-    });
+    const decision = confirm("Deseja mesmo deletar essa reserva?")
+    if(decision){
+      this.api.deletarReserva(reserva).then(r => {
+        this.router.navigate(["/admin"]);
+      });
+    }
   }
 
 }

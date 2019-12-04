@@ -38,7 +38,7 @@ export class EditarUsuarioComponent implements OnInit {
   onSubmit(){
 
     this.api.updateUsuario(this.form).then(r=>{
-      this.route.navigate(["/"]);
+      this.route.navigate(["/admin"]);
     });
   }
 

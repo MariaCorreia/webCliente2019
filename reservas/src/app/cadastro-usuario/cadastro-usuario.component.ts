@@ -22,7 +22,7 @@ export class CadastroUsuarioComponent implements OnInit {
     console.log(this.cfg);
     this.http.post(this.cfg.api+"/usuarios",this.form).toPromise().then(r => {
       // console.log(r);
-      this.route.navigate(["/"]);
+      this.route.navigate(["/admin"]);
     });
     console.log(this.form);
   }

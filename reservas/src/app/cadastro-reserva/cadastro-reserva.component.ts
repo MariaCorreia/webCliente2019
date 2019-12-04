@@ -76,13 +76,13 @@ export class CadastroReservaComponent implements OnInit {
 
     if(!this.erro){
       this.api.updateReserva(this.form).then(r => {
-        this.route.navigate(["/"]);
+        this.route.navigate(["/admin"]);
       })
     }
   }
 
   timeCollision(start, end, target){
-    return start.getTime() < target.getTime() && target.getTime() < end.getTime();
+    return start.getTime() <= target.getTime() && target.getTime() < end.getTime();
   }
 
   hideError(){

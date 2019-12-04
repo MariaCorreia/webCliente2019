@@ -81,7 +81,7 @@ export class EditarReservaComponent implements OnInit {
 
     if(!this.erro){
       this.api.updateReserva(this.form).then(r => {
-        this.route.navigate(["/"]);
+        this.route.navigate(["/admin"]);
       })
     }
   }
