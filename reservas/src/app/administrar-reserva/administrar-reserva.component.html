@@ -1,8 +1,10 @@
-<h5>Reservas:</h5>
+<h5>Reservas:
+    <button class="btn btn-success btn-sm" routerLink="/cadastro_reserva/"><b>+</b></button>
+</h5>
 <div class="card">
-    <ul class="list-group list-group-flush"></ul>
-    <section *ngFor="let r of api.reservas">
-        <li class="list-group-item" routerLink="/editar_reserva/{{r.id}}">{{r.inicio}}:{{r.final}}:{{r.usuario}}:{{r.ambiente}} <button class="btn btn-danger" (click)="deletar(r)">Deletar</button></li>
-    </section>
+    <ul class="list-group list-group-flush card-body" *ngFor="let r of api.reservas">
+        <!-- <section > -->
+        <li class="list-group-item" routerLink="/editar_reserva/{{r.id}}">Inicio: {{r.inicio | date :'dd-MMM-yy h:mm:ss a '}}<br>Fim: {{r.final | date :'dd-MMM-yy h:mm:ss a '}}<br>Usuário: {{r.usuario.nome}}<br>Ambiente: {{r.ambiente.nome}} <button class="btn btn-danger" (click)="deletar(r)">Deletar</button></li>
+        <!-- </section> -->
+    </ul>
 </div>
-<button class="btn btn-primary" routerLink="/cadastro_reserva/">Nova reserva</button>
