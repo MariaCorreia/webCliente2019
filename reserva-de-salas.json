@@ -1,11 +1,31 @@
 {
-  "ambientes": [],
+  "ambientes": [
+    {
+      "nome": "teste ambiente",
+      "descricao": "descrição ambiente",
+      "lotacao": 666,
+      "id": 1
+    }
+  ],
   "usuarios": [
     {
       "nome": "teste",
       "codigo": "666",
       "id": 1
+    },
+    {
+      "nome": "teste usuario",
+      "codigo": "666",
+      "id": 2
     }
   ],
-  "reservas": []
+  "reservas": [
+    {
+      "inicio": "2019-12-31T23:59",
+      "final": "2019-12-31T23:59",
+      "usuario": "2",
+      "ambiente": "1",
+      "id": 1
+    }
+  ]
 }
