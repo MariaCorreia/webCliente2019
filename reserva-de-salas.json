@@ -26,6 +26,13 @@
       "usuario": "2",
       "ambiente": "1",
       "id": 1
+    },
+    {
+      "id": 2,
+      "usuario": "1",
+      "ambiente": "1",
+      "inicio": "2019-12-31T23:59",
+      "final": "2019-12-31T00:59"
     }
   ]
 }

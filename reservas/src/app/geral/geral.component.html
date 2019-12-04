@@ -28,9 +28,25 @@
             <h5>Reservas:</h5>
         </div>
         <div class="card-body">
-            <section *ngFor="let r of reservas">
-                <p>De: {{r.inicio | date:'fullDate'}}, À {{r.final | date:'fullDate'}} <br> Usuario: {{r.usuario.nome}} <br> Ambiente: {{r.ambiente.nome}}</p>
-            </section>
+            <!-- <section *ngFor="let r of reservas"> -->
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>De</th>
+                    <th>À</th>
+                    <th>Usuário</th>
+                    <th>Ambiente</th>
+                </thead>
+                <tbody *ngFor="let r of reservas">
+
+                    <tr>
+                        <td>{{r.inicio | date :'dd-MMM-yy h:mm:ss a '}}</td>
+                        <td>{{r.final | date :'dd-MMM-yy h:mm:ss a '}}</td>
+                        <td>{{r.usuario.nome}} </td>
+                        <td>{{r.ambiente.nome}} </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- </section> -->
         </div>
     </div>
 </div>

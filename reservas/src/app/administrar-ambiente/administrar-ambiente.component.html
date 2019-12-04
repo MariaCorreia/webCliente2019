@@ -1,9 +1,9 @@
-<h5>Ambientes: <button class="btn btn-success btn-sm" routerLink="/cadastro_ambiente/"><b>+</b></button></h5>
+<h5>Ambientes: <button class="btn btn-success btn-sm" routerLink="/cadastro_ambiente/"><i class="fa fa-plus"></i></button></h5>
 <div class="card">
     <!-- <div class="card-body"> -->
     <section *ngFor="let a of api.ambientes">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" routerLink="/editar_ambiente/{{a.id}}">{{a.nome}} <button class="btn btn-danger botaoDelete" (click)="deletar(a)">Deletar</button></li>
+            <li class="list-group-item" routerLink="/editar_ambiente/{{a.id}}">{{a.nome}} <button class="btn btn-danger botaoDelete" (click)="deletar(a)"><i class="fa fa-trash"></i></button></li>
         </ul>
     </section>
     <!-- </div> -->

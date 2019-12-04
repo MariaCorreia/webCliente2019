@@ -1,9 +1,9 @@
 <h5>Usuários:
-    <button class="btn btn-success btn-sm" routerLink="/cadastro_usuario/"><b>+</b></button>
+    <button class="btn btn-success btn-sm" routerLink="/cadastro_usuario/"><i class="fa fa-plus"></i></button>
 </h5>
 <div class="card">
     <ul class="list-group list-group-flush"></ul>
     <section *ngFor="let u of api.usuarios">
-        <li class="list-group-item" routerLink="/editar_usuario/{{u.id}}">{{u.nome}} <button class="btn btn-danger botaoDelete" (click)="deletar(u)">Deletar</button></li>
+        <li class="list-group-item" routerLink="/editar_usuario/{{u.id}}">{{u.nome}} <button class="btn btn-danger botaoDelete" (click)="deletar(u)"><i class="fa fa-trash"></i></button></li>
     </section>
 </div>
