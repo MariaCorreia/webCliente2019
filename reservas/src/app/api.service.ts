@@ -19,7 +19,10 @@ export class ApiService {
         this.http.get(this.cfg.api + "/usuarios").toPromise().then(r => {
           this.usuarios = r;
           resolve(r);
-        }).catch(e => reject(e));
+        }).catch(e => {
+          console.log(e);
+          reject(e);
+        });
       });
     } else {
       return new Promise((resolve, reject) => {
@@ -47,7 +50,10 @@ export class ApiService {
         this.http.get(this.cfg.api + "/ambientes").toPromise().then(r => {
           this.ambientes = r;
           resolve(r);
-        }).catch(e => reject(e));
+        }).catch(e => {
+          console.log(e);
+          reject(e);
+        });
       });
     } else {
       return new Promise((resolve, reject) => {
@@ -76,10 +82,10 @@ export class ApiService {
         this.getAmbientes().then(r => { }),
         this.http.get(this.cfg.api + "/reservas").toPromise().then(r => {
           this.reservas = r;
-          console.log(r);
+          // console.log(r);
         })];
         Promise.all(pms).then((r: any) => {
-          console.log(r);
+          // console.log(r);
           this.invalido = false;
           pms = [];
           for (let i = 0; i < this.reservas.length; i++) {

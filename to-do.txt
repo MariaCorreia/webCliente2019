@@ -18,9 +18,9 @@ CRUD:
 
 To-do geral:
 [x] todos os campos required
-[ ] garantir que só possam ser cadastrados reservas em datas que não tenham reservas
+[x] garantir que só possam ser cadastrados reservas em datas que não tenham reservas
 [ ] deixar o sistema lindo (plz maria)
-    [ ] icones em todas as coisas (font-awesome)
     [ ] icones de loading dentro dos botões depois de clicados
+    [ ] icones em todas as coisas (font-awesome)
     [ ] icones de loading nas paginas antes de conseguir carregar os dados (testar conexão 3g no chrome)
 [ ] Responsivo (funcionar bem em mobile)
