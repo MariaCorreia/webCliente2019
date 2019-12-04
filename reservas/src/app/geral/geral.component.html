@@ -1,23 +1,35 @@
-<h5>Usuarios:</h5>
-<section *ngFor="let u of usuarios"
-routerLink="/editar_usuario/{{u.id}}">
-    <p>{{u.nome}}</p>
-</section>
-<button class = "btn btn-primary" routerLink="/cadastro_usuario/">Novo usuário</button>
+<div class="container">
+    <br>
+    <div class="card">
+        <div class="card-header">
+            <h5>Usuarios:</h5>
+        </div>
+        <div class="card-body">
+            <section *ngFor="let u of usuarios">
+                <p>{{u.nome}}</p>
+            </section>
+        </div>
+    </div>
 
-<h5>Ambientes:</h5>
-<section *ngFor="let a of ambientes"
-routerLink="/editar_ambiente/{{a.id}}">
-    {{a.nome}}
-</section>
-<button class = "btn btn-primary" routerLink="/cadastro_ambiente/">Novo ambiente</button>
+    <div class="card">
+        <div class="card-header">
+            <h5>Ambientes:</h5>
+        </div>
+        <div class="card-body">
+            <section *ngFor="let a of ambientes">
+                {{a.nome}}
+            </section>
+        </div>
+    </div>
 
-<h5>Reservas:</h5>
-<section *ngFor="let r of reservas"
-routerLink="/editar_reserva/{{r.id}}">
-    <p>{{r.inicio}} | {{r.final}} | {{r.usuario.nome}} | {{r.ambiente.nome}}</p>
-</section>
-<button class = "btn btn-primary" routerLink="/cadastro_reserva/">Nova reserva</button>
+    <div class="card">
+
+        <h5>Reservas:</h5>
+        <section *ngFor="let r of reservas">
+            <p>{{r.inicio}} | {{r.final}} | {{r.usuario.nome}} | {{r.ambiente.nome}}</p>
+        </section>
+    </div>
+</div>
 
 
 <!-- Aviso: Retornar de páginas durante cadastro ou atualizações por meio da função location.back()

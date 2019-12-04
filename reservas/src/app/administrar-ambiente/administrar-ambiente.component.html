@@ -2,7 +2,7 @@
 <div class="card">
     <ul class="list-group list-group-flush"></ul>
     <section *ngFor="let a of api.ambientes">
-        <li class="list-group-item">{{a.nome}} <button class="btn btn-danger" (click)="deletar(a)">Deletar</button></li>
+        <li class="list-group-item" routerLink="/editar_ambiente/{{a.id}}">{{a.nome}} <button class="btn btn-danger" (click)="deletar(a)">Deletar</button></li>
     </section>
 </div>
-<button class = "btn btn-primary" routerLink="/cadastro_ambiente/">Novo ambiente</button>
+<button class="btn btn-primary" routerLink="/cadastro_ambiente/">Novo ambiente</button>

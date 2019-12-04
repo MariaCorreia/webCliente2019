@@ -2,7 +2,7 @@
 <div class="card">
     <ul class="list-group list-group-flush"></ul>
     <section *ngFor="let r of api.reservas">
-        <li class="list-group-item">{{r.inicio}}:{{r.final}}:{{r.usuario}}:{{r.ambiente}} <button class="btn btn-danger" (click)="deletar(r)">Deletar</button></li>
+        <li class="list-group-item" routerLink="/editar_reserva/{{r.id}}">{{r.inicio}}:{{r.final}}:{{r.usuario}}:{{r.ambiente}} <button class="btn btn-danger" (click)="deletar(r)">Deletar</button></li>
     </section>
 </div>
-<button class = "btn btn-primary" routerLink="/cadastro_reserva/">Nova reserva</button>
+<button class="btn btn-primary" routerLink="/cadastro_reserva/">Nova reserva</button>
