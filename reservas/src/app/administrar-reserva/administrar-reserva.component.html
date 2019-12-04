@@ -1,4 +1,8 @@
-<!-- <p>administrar-reserva works!</p> -->
-<section *ngFor="let r of api.reservas">
-    <p>{{r.inicio}}:{{r.final}}:{{r.usuario}}:{{r.ambiente}} <button class="btn btn-danger" (click)="deletar(r)">Deletar</button></p>
-</section>
+<h5>Reservas:</h5>
+<div class="card">
+    <ul class="list-group list-group-flush"></ul>
+    <section *ngFor="let r of api.reservas">
+        <li class="list-group-item">{{r.inicio}}:{{r.final}}:{{r.usuario}}:{{r.ambiente}} <button class="btn btn-danger" (click)="deletar(r)">Deletar</button></li>
+    </section>
+</div>
+<button class = "btn btn-primary" routerLink="/cadastro_reserva/">Nova reserva</button>
