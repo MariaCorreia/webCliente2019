@@ -19,9 +19,11 @@ export class AdministrarUsuarioComponent implements OnInit {
     this.api.getUsuarios();
   }
   deletar(usuario){
-    this.api.deletaUsuario(usuario).then(r => {
-      this.router.navigate(["/admin"]);
-      // console.log(r);
-    });
+    const decision = confirm("Deseja mesmo deletar esse usuario?")
+    if(decision){
+      this.api.deletaUsuario(usuario).then(r => {
+        this.router.navigate(["/admin"]);
+        // console.log(r);
+    });}
   }
 }

@@ -19,8 +19,10 @@ export class AdministrarAmbienteComponent implements OnInit {
   }
 
   deletar(ambiente){
+    const decision = confirm("Deseja mesmo deletar esse ambiente?")
+    if(decision){
     this.api.deletaAmbiente(ambiente).then(r => {
       this.router.navigate(["/admin"]);
-    });
+    });}
   }
 }
