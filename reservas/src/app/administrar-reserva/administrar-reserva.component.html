@@ -4,7 +4,7 @@
 <div class="card">
     <ul class="list-group list-group-flush card-body" *ngFor="let r of api.reservas">
         <!-- <section > -->
-        <li class="list-group-item" routerLink="/editar_reserva/{{r.id}}">Inicio: {{r.inicio | date :'dd-MMM-yy h:mm:ss a '}}<br>Fim: {{r.final | date :'dd-MMM-yy h:mm:ss a '}}<br>Usuário: {{r.usuario.nome}}<br>Ambiente: {{r.ambiente.nome}} <button class="btn btn-danger" (click)="deletar(r)">Deletar</button></li>
+        <li class="list-group-item" routerLink="/editar_reserva/{{r.id}}">Inicio: {{r.inicio | date :'dd-MMM-yy h:mm:ss a '}}<br>Fim: {{r.final | date :'dd-MMM-yy h:mm:ss a '}}<br>Usuário: {{r.usuario.nome}}<br>Ambiente: {{r.ambiente.nome}} <button class="btn btn-danger botaoDelete" (click)="deletar(r)">Deletar</button></li>
         <!-- </section> -->
     </ul>
 </div>

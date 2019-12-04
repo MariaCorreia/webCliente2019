@@ -49,8 +49,10 @@ export class CadastroReservaComponent implements OnInit {
       let atualFim = new Date(this.form.final);
       
       if(res.usuario.id == this.form.usuario){
-        if(atualInicio.getTime() < erroInicio.getTime() && erroInicio.getTime() < atualFim.getTime() ||
-        atualInicio.getTime() < erroFim.getTime() && erroFim.getTime() < atualFim.getTime()){
+        if(this.timeCollision(atualInicio, atualFim, erroInicio) ||
+          this.timeCollision(atualInicio, atualFim, erroFim) ||
+          this.timeCollision(erroInicio, erroFim, atualInicio) ||
+          this.timeCollision(erroInicio, erroFim, atualFim)){
           this.erro = true;
           this.erroAmbiente = null;
           this.erroUsuario = true;
@@ -59,8 +61,10 @@ export class CadastroReservaComponent implements OnInit {
         }
       }
       if(res.ambiente.id == this.form.ambiente){
-        if(atualInicio.getTime() < erroInicio.getTime() && erroInicio.getTime() < atualFim.getTime() ||
-        atualInicio.getTime() < erroFim.getTime() && erroFim.getTime() < atualFim.getTime()){
+        if(this.timeCollision(atualInicio, atualFim, erroInicio) ||
+        this.timeCollision(atualInicio, atualFim, erroFim) ||
+        this.timeCollision(erroInicio, erroFim, atualInicio) ||
+        this.timeCollision(erroInicio, erroFim, atualInicio)){
           this.erro = true;
           this.erroAmbiente = true;
           this.erroUsuario = false;
@@ -71,11 +75,14 @@ export class CadastroReservaComponent implements OnInit {
     };
 
     if(!this.erro){
-      this.api.saveReserva(this.form).then(r => {
+      this.api.updateReserva(this.form).then(r => {
         this.route.navigate(["/"]);
       })
     }
+  }
 
+  timeCollision(start, end, target){
+    return start.getTime() < target.getTime() && target.getTime() < end.getTime();
   }
 
   hideError(){

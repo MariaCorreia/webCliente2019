@@ -1,0 +1,10 @@
+.list-group-item:hover{
+    background-color: lightgray;
+}
+
+.botaoDelete{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    margin-left: 99%;
+}

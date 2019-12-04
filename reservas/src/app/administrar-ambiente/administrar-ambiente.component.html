@@ -3,7 +3,7 @@
     <!-- <div class="card-body"> -->
     <section *ngFor="let a of api.ambientes">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" routerLink="/editar_ambiente/{{a.id}}">{{a.nome}} <button class="btn btn-danger" (click)="deletar(a)">Deletar</button></li>
+            <li class="list-group-item" routerLink="/editar_ambiente/{{a.id}}">{{a.nome}} <button class="btn btn-danger botaoDelete" (click)="deletar(a)">Deletar</button></li>
         </ul>
     </section>
     <!-- </div> -->
